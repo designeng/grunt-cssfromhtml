@@ -8,8 +8,6 @@
 
 'use strict';
 
-var changedFilePath;
-
 module.exports = function (grunt) {
 
     grunt.initConfig({
@@ -36,7 +34,7 @@ module.exports = function (grunt) {
     grunt.registerTask('r', ['regarde']);//основное, default надо подредактировать
 
     grunt.event.on('regarde:file', function (status, name, filepath, tasks, spawn) {
-        changedFilePath = filepath;
+        var changedFilePath = filepath;
 
         var srcTemplates = [],
             filesToDelete = [],
@@ -47,13 +45,14 @@ module.exports = function (grunt) {
         srcTemplates.push(changedFilePath);
 
         var templateDir = 'app/templates',
-            stylesBaseDir = "app/styles/less";
+            stylesBaseDir = "app/styles/less",
+            stylesFileExtention = "css";
 
         relativePath = changedFilePath.replace(templateDir, "");
         relativePath = stylesBaseDir + relativePath;
         lastIndex = relativePath.lastIndexOf(".");
         relativePath = relativePath.substr(0, lastIndex);
-        relativePath = relativePath + ".css";
+        relativePath = relativePath + "." + stylesFileExtention;
 
         filesToCopy.push(relativePath);
         filesToDelete.push(relativePath);
