@@ -46,7 +46,9 @@ module.exports = function (grunt) {
 
         var templateDir = 'app/templates',
             stylesBaseDir = "app/styles/less",
-            stylesFileExtention = "css";
+            stylesFileExtention = "css",
+            destForCopyTask = 'copiedCss/',
+            editor = "Sublime Text 2";
 
         relativePath = changedFilePath.replace(templateDir, "");
         relativePath = stylesBaseDir + relativePath;
@@ -62,7 +64,7 @@ module.exports = function (grunt) {
             copy: {
               main: {
                 files: [
-                  {expand: true, src: filesToCopy, dest: 'copiedCss/'} // includes files in path
+                  {expand: true, src: filesToCopy, dest: destForCopyTask} // includes files in path
                 ]
               }
             },
@@ -77,7 +79,7 @@ module.exports = function (grunt) {
                     changedFilePath: changedFilePath,
                     templateDir: templateDir,
                     stylesBaseDir: stylesBaseDir, //here must be saved created .css with the same path structure as the source html-template file 
-                    editor: "Sublime Text 2",
+                    editor: editor,
                     openfile: true  //open file with editor?
                 }
             }

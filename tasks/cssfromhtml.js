@@ -97,6 +97,7 @@ module.exports = function (grunt) {
                         grunt.log.writeln('File "' + relativePath + '" created. / changed ' + f.changedFilePath);
 
                         if(f.openfile){
+                            if(!f.editor) f.editor = "Sublime Text 2";
                             var command = 'open -a "' + f.editor + '" ' + relativePath;
                             exec(command);
                         }
