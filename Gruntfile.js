@@ -2,7 +2,7 @@
  * grunt-cssfromhtml
  * 
  *
- * Copyright (c) 2013
+ * Copyright (c) 2013 Denis Savenok
  * Licensed under the MIT license.
  */
 
